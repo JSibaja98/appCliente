@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectorestclient/src/pages/books_store_page/books_store_page.dart';
 import 'package:proyectorestclient/src/pages/favorite_list/favorite_list_page.dart';
+import 'package:proyectorestclient/src/pages/search/search_delegate.dart';
 import 'package:proyectorestclient/src/pages/shopping_cart/shopping_cart_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +17,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Soda la suculenta'),
+        title: Text('Bookland'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
+          ),
+        ],
       ),
       body: _callPage(_actualPage),
       bottomNavigationBar: _createBottomNavigationBar(),
