@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {},
-        child: Icon(Icons.settings),
+        child: Icon(Icons.tune),
       ),
     );
   }
