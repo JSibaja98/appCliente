@@ -29,7 +29,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _callPage(_actualPage),
       bottomNavigationBar: _createBottomNavigationBar(),
-      // floatingActionButton: ,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {},
+        child: Icon(Icons.settings),
+      ),
     );
   }
 
@@ -37,11 +42,11 @@ class _HomePageState extends State<HomePage> {
     return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite_border),
+          icon: Icon(Icons.collections_bookmark),
           title: Text(''),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.collections_bookmark),
+          icon: Icon(Icons.favorite_border),
           title: Text(''),
         ),
         BottomNavigationBarItem(
@@ -61,10 +66,10 @@ class _HomePageState extends State<HomePage> {
   Widget _callPage(int actualPage) {
     switch (actualPage) {
       case 0:
-        return FavoriteListPage();
+        return BooksStorePage();
         break;
       case 1:
-        return BooksStorePage();
+        return FavoriteListPage();
         break;
       case 2:
         return ShoppingCartPage();
