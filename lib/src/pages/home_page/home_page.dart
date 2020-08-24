@@ -43,15 +43,15 @@ class _HomePageState extends State<HomePage> {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.collections_bookmark),
-          title: Text(''),
+          title: Container(),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite_border),
-          title: Text(''),
+          title: Container(),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.shopping_cart),
-          title: Text(''),
+          title: Container(),
         ),
       ],
       currentIndex: _actualPage,
