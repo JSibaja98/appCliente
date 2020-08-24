@@ -15,14 +15,14 @@ class ProductsProvider {
  * Powerd by: getCasting
  * ************************************************************************************/
   Future<List<ProductsModel>> getProducts() async {
-    final url = '$_url/productos';
+    final url = '$_url/productos.json';
     final resp = await http.get(url);
     final decodedData = json.decode(resp.body);
 
     print(decodedData);
-    final cast = new Product.fromJsonList(decodedData);
+    final cast = new ProductsModel.fromJson(decodedData);
     print(cast);
-    return decodedData;
+    return [];
  
   }
 }
