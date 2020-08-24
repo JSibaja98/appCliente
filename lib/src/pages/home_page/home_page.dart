@@ -3,6 +3,7 @@ import 'package:proyectorestclient/src/pages/books_store_page/books_store_page.d
 import 'package:proyectorestclient/src/pages/favorite_list/favorite_list_page.dart';
 import 'package:proyectorestclient/src/pages/search/search_delegate.dart';
 import 'package:proyectorestclient/src/pages/shopping_cart/shopping_cart_page.dart';
+import 'package:proyectorestclient/src/providers/products_provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,8 +13,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _actualPage = 0;
 
+  final _productsProvider = new ProductsProvider();
+
   @override
   Widget build(BuildContext context) {
+    _productsProvider.getProducts();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
