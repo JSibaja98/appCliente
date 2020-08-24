@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:proyectorestclient/src/models/product_model.dart';
+import 'package:proyectorestclient/src/providers/products_provider.dart';
 
 class BooksStorePage extends StatelessWidget {
+  final productsProvider = new ProductsProvider();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,36 +39,46 @@ class BooksStorePage extends StatelessWidget {
   }
 
   Widget _createBookCards() {
-    return Table(
-      children: [
-        TableRow(
-          children: [
-            _createCard(),
-            _createCard(),
-          ],
-        ),
-        TableRow(
-          children: [
-            _createCard(),
-            _createCard(),
-          ],
-        ),
-        TableRow(
-          children: [
-             _createCard(),
-            _createCard(),
-          ],
-        ),
-        TableRow(
-          children: [
-            _createCard(),
-            _createCard(),
-          ],
-        ),
-      ],
-    );
+    // return Table(
+    //   children: [
+    //     TableRow(
+    //       children: [
+    //         _createCard(),
+    //         _createCard(),
+    //       ],
+    //     ),
+    //     TableRow(
+    //       children: [
+    //         _createCard(),
+    //         _createCard(),
+    //       ],
+    //     ),
+    //     TableRow(
+    //       children: [
+    //          _createCard(),
+    //         _createCard(),
+    //       ],
+    //     ),
+    //     TableRow(
+    //       children: [
+    //         _createCard(),
+    //         _createCard(),
+    //       ],
+    //     ),
+    //   ],
+    // );
 
- 
+    return FutureBuilder(
+      future: productsProvider.getProducts(),
+      builder:
+          (BuildContext context, AsyncSnapshot<List<ProductsModel>> snapshot) {
+        if (snapshot.hasData) {
+          return Container();
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
+    );
   }
 
   Widget _createCard() {
