@@ -4,6 +4,11 @@ import 'dart:async';
 import 'package:proyectorestclient/src/models/product_model.dart';
 
 class ProductsProvider {
+
+    String _apiKey = 'aaeb1f745a530717c0dafd9b9b699bf6';
+  String _url = 'api.themoviedb.org';
+  String _language = 'en-Us';
+
 /**************************************************************************************
  * Author: Esalas
  * date: 16/08/2020
@@ -11,25 +16,30 @@ class ProductsProvider {
  * Name: getPopularMovies
  * Powerd by: getCasting
  * ************************************************************************************/
-  Future<List<ProductsModel>> getProducts() async {
+  Future<String> getProducts() async {
     // final url = '$_url/productos.json';
     // final url = http.get(new Uri.http("$_url", "/productos"));
-    final url = http.get('https://jsonplaceholder.typicode.com/albums/1');
+    final url = Uri.https(_url, '3/movie/popular', {
+      'api_key': _apiKey,
+      'language': _language,
+    });
+    // final url = http.get('https://jsonplaceholder.typicode.com/albums/1');
     final resp = await http.get(url);
     final Map<String, dynamic> decodedData = json.decode(resp.body);
-    final List<ProductsModel> products = new List();
+    // final List<ProductsModel> products = new List();
 
     if (decodedData == null) {
-      return [];
+      return '';
     } else {
-      decodedData.forEach((id, prod) {
-        final prodTemp = ProductsModel.fromJson(prod);
-        products.add(prodTemp);
+      decodedData.forEach((id, item) {
+        print(item);
+        // final prodTemp = ProductsModel.fromJson(prod);
+        // products.add(prodTemp);
       });
     }
 
-    print(products);
+    // print(products);
 
-    return products;
+    return '';
   }
 }

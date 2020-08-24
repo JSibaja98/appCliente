@@ -67,11 +67,11 @@ class BooksStorePage extends StatelessWidget {
     //     ),
     //   ],
     // );
-
+    // productsProvider.getProducts();
     return FutureBuilder(
       future: productsProvider.getProducts(),
       builder:
-          (BuildContext context, AsyncSnapshot<List<ProductsModel>> snapshot) {
+          (BuildContext context, AsyncSnapshot<String> snapshot) {
         if (snapshot.hasData) {
           return Container();
         } else {
