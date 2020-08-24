@@ -9,7 +9,7 @@
 class Product {
   List<ProductsModel> casting = new List();
 
-  Product.fromJsonList(List<dynamic> jsonList) {
+  Product.fromJson(List<dynamic> jsonList) {
     if (jsonList == null) {
       return;
     } else {

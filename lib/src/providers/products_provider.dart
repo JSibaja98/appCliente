@@ -29,6 +29,12 @@ class ProductsProvider {
       var response = await dio.get('$_url/productos');
       print(response.statusCode);
       print(response.data);
+      var responseData = response.data as List;
+
+      var result = responseData.map((e) => Product.fromJson(e)).toList();
+
+      print('result');
+      print(result);
     } catch (e) {
       print(e.toString());
     }
