@@ -9,12 +9,12 @@
 class Product {
   List<ProductsModel> casting = new List();
 
-  Product.fromJson(List<dynamic> jsonList) {
+  Product.fromJsonList(List<dynamic> jsonList) {
     if (jsonList == null) {
       return;
     } else {
       jsonList.forEach((item) {
-        final actor = ProductsModel.fromJson(item);
+        final actor = ProductsModel.fromJsonMap(item);
         casting.add(actor);
       });
     }
@@ -38,7 +38,7 @@ class ProductsModel {
   String imagenProducto;
   int precioProducto;
 
-  factory ProductsModel.fromJson(Map<String, dynamic> json) => ProductsModel(
+  factory ProductsModel.fromJsonMap(Map<String, dynamic> json) => ProductsModel(
         pkProducto: json["pkProducto"],
         fkCategoria: json["fkCategoria"],
         nombreProducto: json["nombreProducto"],

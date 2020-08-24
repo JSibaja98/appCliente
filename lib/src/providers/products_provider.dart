@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:proyectorestclient/src/models/product_model.dart';
 
 class ProductsProvider {
-  String _url = 'https://localhost:32770/api/';
+  String _url = 'https://localhost:32770/api';
 
 /**************************************************************************************
  * Author: Esalas
@@ -15,28 +15,14 @@ class ProductsProvider {
  * Powerd by: getCasting
  * ************************************************************************************/
   Future<List<ProductsModel>> getProducts() async {
-    // final url = Uri.https(_url, 'productos');
-    // final resp = await http.get(url);
-    // final decodedData = json.decode(resp.body);
+    final url = '$_url/productos';
+    final resp = await http.get(url);
+    final decodedData = json.decode(resp.body);
 
-    // print(decodedData);
-    // final cast = new Product.fromJsonList(decodedData);
-    // print(cast);
-    // return decodedData;
-    final Dio dio = new Dio();
-
-    try {
-      var response = await dio.get('$_url/productos');
-      print(response.statusCode);
-      print(response.data);
-      var responseData = response.data as List;
-
-      var result = responseData.map((e) => Product.fromJson(e)).toList();
-
-      print('result');
-      print(result);
-    } catch (e) {
-      print(e.toString());
-    }
+    print(decodedData);
+    final cast = new Product.fromJsonList(decodedData);
+    print(cast);
+    return decodedData;
+ 
   }
 }
