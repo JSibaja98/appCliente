@@ -5,6 +5,22 @@
  * Name: ProductsModel
  * Powerd by: getCasting
  * ************************************************************************************/
+
+class Product {
+  List<ProductsModel> casting = new List();
+
+  Product.fromJsonList(List<dynamic> jsonList) {
+    if (jsonList == null) {
+      return;
+    } else {
+      jsonList.forEach((item) {
+        final actor = ProductsModel.fromJson(item);
+        casting.add(actor);
+      });
+    }
+  }
+}
+
 class ProductsModel {
   ProductsModel({
     this.pkProducto,
