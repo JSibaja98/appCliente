@@ -5,9 +5,7 @@ import 'package:proyectorestclient/src/models/product_model.dart';
 
 class ProductsProvider {
 
-    String _apiKey = 'aaeb1f745a530717c0dafd9b9b699bf6';
-  String _url = 'api.themoviedb.org';
-  String _language = 'en-Us';
+  String _url = "192.168.1.8/api_flutter/api";
 
 /**************************************************************************************
  * Author: Esalas
@@ -16,30 +14,29 @@ class ProductsProvider {
  * Name: getPopularMovies
  * Powerd by: getCasting
  * ************************************************************************************/
-  Future<String> getProducts() async {
-    // final url = '$_url/productos.json';
-    // final url = http.get(new Uri.http("$_url", "/productos"));
-    final url = Uri.https(_url, '3/movie/popular', {
-      'api_key': _apiKey,
-      'language': _language,
-    });
-    // final url = http.get('https://jsonplaceholder.typicode.com/albums/1');
+  Future <List<ProductsModel>> getProducts() async {
+
+    final url = new Uri.http(_url, "productos");
+    // final url = Uri.https(_url, '3/movie/popular', {
+    //   'api_key': _apiKey,
+    //   'language': _language,
+    // });
     final resp = await http.get(url);
     final Map<String, dynamic> decodedData = json.decode(resp.body);
-    // final List<ProductsModel> products = new List();
+    final List<ProductsModel> products = new List();
 
     if (decodedData == null) {
-      return '';
+      return [];
     } else {
       decodedData.forEach((id, item) {
         print(item);
-        // final prodTemp = ProductsModel.fromJson(prod);
-        // products.add(prodTemp);
+        final prodTemp = ProductsModel.fromJson(item);
+        products.add(prodTemp);
       });
     }
 
     // print(products);
 
-    return '';
+    return [];
   }
 }
