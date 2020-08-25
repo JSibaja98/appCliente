@@ -71,7 +71,7 @@ class BooksStorePage extends StatelessWidget {
     return FutureBuilder(
       future: productsProvider.getProducts(),
       builder:
-          (BuildContext context, AsyncSnapshot<String> snapshot) {
+          (BuildContext context, AsyncSnapshot<List<ProductsModel>> snapshot) {
         if (snapshot.hasData) {
           return Container();
         } else {

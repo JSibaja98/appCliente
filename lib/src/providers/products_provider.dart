@@ -5,11 +5,7 @@ import 'package:proyectorestclient/src/models/product_model.dart';
 
 class ProductsProvider {
 
-  //   String _apiKey = 'aaeb1f745a530717c0dafd9b9b699bf6';
-  // String _url = 'api.themoviedb.org';
-    String _url = 'localhost:5000';
-
-  // String _language = 'en-Us';
+  String _url = "192.168.1.8/api_flutter/api";
 
 /**************************************************************************************
  * Author: Esalas
@@ -18,9 +14,9 @@ class ProductsProvider {
  * Name: getPopularMovies
  * Powerd by: getCasting
  * ************************************************************************************/
-  Future<String> getProducts() async {
+  Future <List<ProductsModel>> getProducts() async {
 
-    final url = new Uri.http(_url, "/productos");
+    final url = new Uri.http(_url, "productos");
     // final url = Uri.https(_url, '3/movie/popular', {
     //   'api_key': _apiKey,
     //   'language': _language,
@@ -30,7 +26,7 @@ class ProductsProvider {
     final List<ProductsModel> products = new List();
 
     if (decodedData == null) {
-      return '';
+      return [];
     } else {
       decodedData.forEach((id, item) {
         print(item);
@@ -41,6 +37,6 @@ class ProductsProvider {
 
     // print(products);
 
-    return '';
+    return [];
   }
 }
