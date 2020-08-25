@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectorestclient/src/models/product_model.dart';
 import 'package:proyectorestclient/src/providers/products_provider.dart';
+import 'package:proyectorestclient/src/utils/products_cards.dart';
 
 class BooksStorePage extends StatelessWidget {
   final productsProvider = new ProductsProvider();
@@ -73,7 +74,7 @@ class BooksStorePage extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<List<ProductsModel>> snapshot) {
         if (snapshot.hasData) {
-          return Container();
+          return ProductsCards(products: snapshot.data);
         } else {
           return CircularProgressIndicator();
         }

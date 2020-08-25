@@ -26,18 +26,18 @@ class ProductsProvider {
     final Map<String, dynamic> decodedData = json.decode(resp.data);
     final List<ProductsModel> products = new List();
 
-    if (decodedData == null) {
-      return [];
-    } else {
-      decodedData.forEach((id, item) {
-        print(item);
-        final prodTemp = ProductsModel.fromJson(item);
-        products.add(prodTemp);
-      });
-    }
+    // if (decodedData == null) {
+    //   return [];
+    // } else {
+    //   decodedData.forEach((id, item) {
+    //     print(item);
+    //     final prodTemp = ProductsModel.fromJson(item);
+    //     products.add(prodTemp);
+    //   });
+    // }
 
     // print(products);
 
-    return [];
+    return resp.data;
   }
 }
